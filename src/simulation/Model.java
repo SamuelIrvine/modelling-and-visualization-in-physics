@@ -44,7 +44,7 @@ public abstract class Model<T extends State> implements Runnable, Dynamic<T> {
 	
 	public void run(){
 		isRunning=true;
-		while(isRunning()){
+		while(isRunning()&&!terminate()){
 			update(state);
 			step++;
 			if (step%samplePeriod==0){
@@ -70,6 +70,10 @@ public abstract class Model<T extends State> implements Runnable, Dynamic<T> {
 	
 	public void update(T state){
 		dynamic.update(state);
+	}
+	
+	public boolean terminate(){
+		return false;
 	}
 
 }

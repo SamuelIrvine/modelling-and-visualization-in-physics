@@ -225,4 +225,40 @@ public class Stat extends Vector<Stat>{
 	public Stat copy() {
 		return new Stat(d);
 	}
+
+	@Override
+	public Stat zero() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Stat scale(double a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Stat multiple(Stat a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Stat modMinDist(Stat b, Stat mod) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double volume() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int dimension() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

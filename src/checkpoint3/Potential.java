@@ -2,8 +2,10 @@ package checkpoint3;
 
 import shape.Vector;
 
-public interface Potential<V extends Vector<V>, T extends Particle<V>>{
+public interface Potential<T extends Vector<T>>{
 	
-	public double evaluate(T a, T b);
+	public double energy(Particle<T> a, Particle<T> b, T box);
+	
+	public T gradient(Particle<T> a, Particle<T> b, T box);
 
 }

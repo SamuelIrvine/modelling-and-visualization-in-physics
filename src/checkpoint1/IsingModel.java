@@ -4,6 +4,7 @@ import simulation.Display;
 import simulation.Model;
 import simulation.Output;
 import simulation.Sleep;
+import util.ConstantFunction;
 
 public class IsingModel extends Model<SpinLattice>{
 	
@@ -56,7 +57,7 @@ public class IsingModel extends Model<SpinLattice>{
 			}
 		}
 		long seed=0L;
-		Temperature t=new Temperature(temp);
+		ConstantFunction t=new ConstantFunction(temp);
 		IsingDynamic d=new GlauberDynamic(t, seed);
 		if (dynamic.toLowerCase().startsWith("k")){
 			d=new KawasakiDynamic(t, seed);

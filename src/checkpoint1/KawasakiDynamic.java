@@ -1,8 +1,10 @@
 package checkpoint1;
 
+import util.ConstantFunction;
+
 public class KawasakiDynamic extends IsingDynamic{
 	
-	KawasakiDynamic(Temperature t, long seed){
+	KawasakiDynamic(ConstantFunction t, long seed){
 		super(t, seed);
 	}
 

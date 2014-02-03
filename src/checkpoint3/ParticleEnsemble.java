@@ -1,27 +1,45 @@
 package checkpoint3;
 
-import java.awt.Graphics;
+import java.lang.reflect.Array;
 
 import shape.Vector;
 import simulation.State;
+import util.Function;
 
-public class ParticleEnsemble<V extends Vector<V>, T extends Particle<V>> implements State{
+public abstract class ParticleEnsemble<T extends Vector<T>> implements State{
 	
-	private T[] particles;
-	private V boundries;
+	public Particle<T>[] particles;
+	public T[] forces;
+	public T boundries;
+	public Potential<T> potential;
+	public double friction=0d;
+	public Function dt;
+	
+	public ParticleEnsemble(VerletDynamic<T> d, Function dt){
+		potential=d.potential;
+		this.dt=dt;
+	}
 	
 	@SuppressWarnings("unchecked")
-	public ParticleEnsemble(double density, V boundries){
-		particles=(T[])(new Object[n]);
-		for (T p: particles){
-			
+	public T[] forces(VerletDynamic<T> d){
+		return d.updateForces(particles, (T[])(Array.newInstance(boundries.getClass(), particles.length)), boundries);
+	}
+	
+	public double kineticEnergy(){
+		double energy=0d;
+		for (Particle<T> p: particles){
+			energy+=p.v.dot(p.v)/(2d*p.m);
 		}
+		return energy;
 	}
-
-	@Override
-	public void render(Graphics g) {
-		// TODO Auto-generated method stub
-		
+	
+	public double potentialEnergy(){
+		double energy=0d;
+		for (int i=0;i<particles.length;i++){
+			for (int j=i+1;j<particles.length;j++){
+				energy+=potential.energy(particles[i], particles[j], boundries);
+			}
+		}
+		return energy;
 	}
-
 }

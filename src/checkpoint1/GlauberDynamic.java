@@ -1,10 +1,12 @@
 package checkpoint1;
 
+import util.ConstantFunction;
+
 
 public class GlauberDynamic extends IsingDynamic{
 	
 	
-	GlauberDynamic(Temperature t, long seed){
+	GlauberDynamic(ConstantFunction t, long seed){
 		super(t, seed);
 	}
 
